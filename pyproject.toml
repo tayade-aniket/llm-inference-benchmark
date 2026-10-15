@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "inference-bench"
+version = "0.1.0"
+description = "LLM Inference Benchmark & Optimization Study on Resource-Constrained Hardware"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "LLM Inference Benchmark Contributors"}
+]
+keywords = ["llm", "inference", "benchmark", "quantization", "llama.cpp", "transformers", "systems"]
+dependencies = [
+    "psutil>=5.9.0",
+    "pyyaml>=6.0",
+    "pydantic>=2.0.0",
+    "numpy>=1.24.0",
+    "pandas>=2.0.0",
+    "matplotlib>=3.7.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]

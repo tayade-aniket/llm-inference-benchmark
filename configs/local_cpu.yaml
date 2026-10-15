@@ -1,0 +1,37 @@
+# Configuration for Local Resource-Constrained CPU (4GB RAM)
+hardware:
+  device: "cpu"
+  cpu_threads: 2           # Match physical cores to avoid cache thrashing
+  max_memory_mb: 850       # Strict threshold for 4GB RAM system
+  system_ram_gb: 4.0
+
+models:
+  primary:
+    family: "Qwen2.5"
+    repo_id: "Qwen/Qwen2.5-0.5B-Instruct"
+    parameter_count: "0.49B"
+    context_length: 512    # Bound context to conserve KV-cache memory
+    max_new_tokens: 32     # Short outputs to avoid OOM
+  gguf_variants:
+    q4_k_m: "models/qwen2.5-0.5b-instruct-q4_k_m.gguf"
+    q8_0: "models/qwen2.5-0.5b-instruct-q8_0.gguf"
+
+engines:
+  transformers:
+    enabled: true
+    torch_dtype: "float32"
+    device_map: "cpu"
+    low_cpu_mem_usage: true
+  llama_cpp:
+    enabled: true
+    n_threads: 2
+    n_ctx: 512
+    n_batch: 64
+    use_mmap: true
+    kv_cache_type_k: "f16"
+    kv_cache_type_v: "f16"
+
+safety:
+  enforce_memory_check: true
+  min_available_ram_mb: 500
+  abort_on_high_memory: true

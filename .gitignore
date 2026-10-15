@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment & Tooling
+bin/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# LLM Models & Weights (NEVER commit model files)
+models/
+*.bin
+*.pt
+*.pth
+*.safetensors
+*.gguf
+*.onnx
+
+# Environment & Machine Specific
+.env
+local_secrets.*
+results/raw/*.jsonl
+results/raw/*.csv
+!results/raw/.gitkeep
+!results/processed/.gitkeep
+!results/figures/.gitkeep
+
+# IDE
+.vscode/
+.idea/

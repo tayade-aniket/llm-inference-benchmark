@@ -1,0 +1,22 @@
+# Benchmark Harness Parameters
+benchmark:
+  warmup_runs: 1
+  repetitions: 3
+  random_seed: 42
+  sequential_execution: true
+
+generation:
+  temperature: 0.0         # Greedy decoding for deterministic benchmarks
+  top_p: 1.0
+  max_new_tokens: 32
+  min_new_tokens: 16
+
+prompts:
+  dataset_path: "data/prompts/benchmark_prompts.jsonl"
+  test_slice: 5            # Number of prompts to evaluate in standard suite
+
+output:
+  raw_dir: "results/raw"
+  processed_dir: "results/processed"
+  figures_dir: "results/figures"
+  reports_dir: "reports"
