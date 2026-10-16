@@ -3,7 +3,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![Platform: Windows 10 CPU](https://img.shields.io/badge/platform-Windows%2010%20x64%20CPU-lightgrey.svg)](https://www.microsoft.com/windows)
-[![Tests: Pytest Passing](https://img.shields.io/badge/tests-5%20passed-brightgreen.svg)](tests/)
+[![Tests: Pytest Passing](https://img.shields.io/badge/tests-10%20passed-brightgreen.svg)](tests/)
+[![UI: Recruiter Dashboard](https://img.shields.io/badge/UI-Interactive%20Dashboard%20%26%20Simulator-brightgreen.svg)](#-interactive-recruiter-ui--dashboard)
 
 An educational and technically rigorous machine learning systems project investigating the empirical relationship between **model size, inference latency, memory bandwidth, compute utilization, quantization, caching, and serving architecture** on severely resource-constrained hardware (dual-core mobile CPU with 4 GB system RAM).
 
@@ -22,6 +23,36 @@ This project investigates how inference-engine design, model quantization, and c
 4. **Caching Trade-offs**: How does prefix/prompt caching affect TTFT when common system instructions are repeatedly submitted?
 5. **Roofline Analysis**: At what arithmetic intensity does inference transition from memory-bandwidth-bound to compute-bound?
 6. **Edge vs. Cloud Validity**: What inferences can legitimately be generalized to production GPU serving, and what remains unique to CPU edge environments?
+
+---
+
+## ⚡ Interactive Recruiter UI & Dashboard
+
+This repository features **two recruiter-friendly, interactive user interfaces** designed to make complex LLM inference systems concepts immediately accessible, visually impactful, and fun to explore:
+
+### Option A: Streamlit Interactive ML Systems Dashboard (Full App)
+Run the rich multi-tab Streamlit dashboard with live hardware telemetry, dynamic Plotly charts, interactive Roofline model with sliders, and live local token generation:
+```powershell
+# Single-command launcher:
+python launch_ui.py
+# Or directly via streamlit:
+streamlit run app.py
+```
+* **Tab 1: 🎯 Executive Summary & Impact**: 60-second elevator pitch, key ROI metrics, and architectural trade-off table.
+* **Tab 2: ⚡ Live Inference Playground**: Run real local `llama.cpp` AVX2 inference or simulate any hardware/model combination with live streaming token animation and RAM gauges.
+* **Tab 3: 📊 Empirical Benchmark Results**: Interactive charts comparing Throughput, TTFT vs ITL, and RAM vs 850 MB physical limit.
+* **Tab 4: 📐 Interactive Roofline Model**: Manipulate memory bandwidth and compute GFLOPs sliders to dynamically watch the operational regime change.
+* **Tab 5: 🧠 Systems Deep-Dive & Interview FAQ**: Comprehensive answers to top systems engineering & ML infra interview questions.
+* **Tab 6: 💻 Live System Environment**: Real-time audit of host CPU cores, memory meters, and SIMD vector flags.
+
+### Option B: Standalone Zero-Install Web Showcase (Instant Browser Preview)
+A lightweight, zero-dependency, ultra-crisp web application built with Tailwind CSS and Chart.js. Can be opened instantly in any browser without running a server or installing dependencies (ideal for quick portfolio review or GitHub Pages):
+```powershell
+# Double-click launch_ui.bat and select [2], or run:
+python launch_ui.py --mode web
+# Or directly open in any browser:
+start ui\index.html
+```
 
 ---
 
@@ -68,6 +99,12 @@ flowchart TD
         REP["Markdown Report\n(reports/benchmark_report.md)"]
     end
 
+    subgraph UI ["Recruiter & User Interfaces"]
+        ST["Streamlit Interactive Dashboard\n(app.py)"]
+        WEB["Standalone Web Showcase\n(ui/index.html)"]
+        LAUNCH["One-Click Launcher\n(launch_ui.bat / launch_ui.py)"]
+    end
+
     CFG --> CLI
     PRM --> BM
     CLI --> BM
@@ -80,6 +117,12 @@ flowchart TD
     RAW --> PROC
     PROC --> FIGS
     PROC --> REP
+
+    PROC -.-> ST
+    RAW -.-> ST
+    LLAMA -.-> ST
+    LAUNCH --> ST
+    LAUNCH --> WEB
 ```
 
 ---
@@ -165,6 +208,13 @@ llm-inference-benchmark/
 ├── LICENSE                                  # MIT License
 ├── requirements.txt                         # Lightweight Python dependencies
 ├── pyproject.toml                           # Package build configuration & pytest setup
+├── app.py                                   # Streamlit Recruiter & Engineering Systems Dashboard
+├── launch_ui.py                             # Cross-platform CLI UI launcher
+├── launch_ui.bat                            # 1-Click Windows Menu UI launcher
+├── ui/                                      # Standalone Zero-Dependency Recruiter Web Showcase
+│   ├── index.html                           # Modern responsive HTML5 portfolio showcase
+│   ├── app.js                               # Interactive Chart.js charts & live token streamer
+│   └── style.css                            # Tailored dark executive styling & scrollbars
 ├── configs/
 │   ├── local_cpu.yaml                       # Strict parameters for 4GB RAM CPU
 │   ├── benchmark.yaml                       # Repetition, warmup, and prompt configs
@@ -217,12 +267,22 @@ llm-inference-benchmark/
     ├── conftest.py                          # Test environment configuration
     ├── test_metrics.py                      # Latency, ITL, and throughput unit tests
     ├── test_benchmark_schema.py             # Schema compliance tests
-    └── test_caching.py                      # Prefix cache tests
+    ├── test_caching.py                      # Prefix cache tests
+    └── test_ui.py                           # UI data loading and analytical modeling tests
 ```
 
 ---
 
 ## 9. Quickstart: Reproducing Locally on Windows 10
+
+### 🚀 Step 0: Instant Recruiter UI Preview (Zero Setup Needed)
+To explore the interactive dashboard right away:
+```powershell
+# Double-click launch_ui.bat or run:
+python launch_ui.py
+# Or open the instant zero-dependency web showcase:
+start ui\index.html
+```git 
 
 ### Step 1: Clone Repository & Install Dependencies
 ```powershell
