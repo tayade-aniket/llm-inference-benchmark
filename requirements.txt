@@ -1,6 +1,10 @@
 # Core dependencies for LLM Inference Benchmark & Optimization Study
 # Optimized for Resource-Constrained Hardware (4GB RAM, CPU-only)
 
+# Web UI & Visualization
+streamlit>=1.30.0
+plotly>=5.18.0
+
 # Core Runtime & Monitoring
 psutil>=5.9.0
 pyyaml>=6.0
