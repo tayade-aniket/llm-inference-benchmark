@@ -1,0 +1,10 @@
+experiment_id,timestamp_utc,engine,model_id,model_revision_or_hash,quantization,device,cpu_model,ram_gb,gpu_model,vram_gb,prompt_tokens,generated_tokens,batch_size,concurrency,ttft_ms,median_itl_ms,p95_itl_ms,time_per_output_token_ms,end_to_end_ms,output_tokens_per_second,process_peak_ram_mb,peak_vram_mb,cache_enabled,cache_hit,status,notes
+exp01_local,2026-10-15T18:48:40.611461+00:00,llama_cpp,qwen2.5-0.5b-instruct-q4_k_m.gguf,,q4_k_m,cpu,Intel Core i3-5005U,4.0,,,6,24,1,1,173.99,173.98,173.98,173.98,4175.89,5.75,409.6,,False,,success,
+exp01_local,2026-10-15T18:48:45.097740+00:00,llama_cpp,qwen2.5-0.5b-instruct-q4_k_m.gguf,,q4_k_m,cpu,Intel Core i3-5005U,4.0,,,11,24,1,1,175.51,175.5,175.5,175.5,4212.6,5.7,367.99,,False,,success,
+exp01_local,2026-10-15T18:48:49.875787+00:00,llama_cpp,qwen2.5-0.5b-instruct-q4_k_m.gguf,,q4_k_m,cpu,Intel Core i3-5005U,4.0,,,13,24,1,1,189.99,189.98,189.98,189.98,4559.87,5.26,336.93,,False,,success,
+exp01_local,2026-10-15T18:48:53.689307+00:00,llama_cpp,qwen2.5-0.5b-instruct-q4_k_m.gguf,,q4_k_m,cpu,Intel Core i3-5005U,4.0,,,6,24,1,1,147.21,147.2,147.2,147.2,3533.2,6.79,336.94,,False,,success,
+exp01_local,2026-10-15T18:48:57.951067+00:00,llama_cpp,qwen2.5-0.5b-instruct-q4_k_m.gguf,,q4_k_m,cpu,Intel Core i3-5005U,4.0,,,11,24,1,1,168.29,168.28,168.28,168.28,4039.11,5.94,336.95,,False,,success,
+exp01_local,2026-10-15T18:49:11.637823+00:00,llama_cpp,qwen2.5-0.5b-instruct-q4_k_m.gguf,,q4_k_m,cpu,Intel Core i3-5005U,4.0,,,13,24,1,1,560.85,560.84,560.84,560.84,13461.56,1.78,336.95,,False,,success,
+exp01_local,2026-10-15T18:49:16.150665+00:00,llama_cpp,qwen2.5-0.5b-instruct-q4_k_m.gguf,,q4_k_m,cpu,Intel Core i3-5005U,4.0,,,6,24,1,1,170.06,170.05,170.05,170.05,4081.51,5.88,275.43,,False,,success,
+exp01_local,2026-10-15T18:49:20.507940+00:00,llama_cpp,qwen2.5-0.5b-instruct-q4_k_m.gguf,,q4_k_m,cpu,Intel Core i3-5005U,4.0,,,11,24,1,1,172.0,171.99,171.99,171.99,4128.2,5.81,275.45,,False,,success,
+exp01_local,2026-10-15T18:49:24.916717+00:00,llama_cpp,qwen2.5-0.5b-instruct-q4_k_m.gguf,,q4_k_m,cpu,Intel Core i3-5005U,4.0,,,13,24,1,1,173.7,173.69,173.69,173.69,4168.84,5.76,275.47,,False,,success,

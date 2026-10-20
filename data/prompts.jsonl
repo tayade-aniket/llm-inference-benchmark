@@ -1,0 +1,6 @@
+{"id": "p01_short", "category": "factual", "prompt": "What is the capital of France?", "prefix_group": null}
+{"id": "p02_short", "category": "coding", "prompt": "Write a Python function to compute the factorial of an integer.", "prefix_group": null}
+{"id": "p03_medium", "category": "reasoning", "prompt": "Explain the difference between latency and throughput in computer systems using an analogy.", "prefix_group": null}
+{"id": "p04_cache_prefix_a", "category": "caching", "prompt": "System instruction: You are a helpful assistant for medical knowledge. Query: What are the main symptoms of common cold?", "prefix_group": "medical_system"}
+{"id": "p05_cache_prefix_b", "category": "caching", "prompt": "System instruction: You are a helpful assistant for medical knowledge. Query: What is the recommended treatment for seasonal flu?", "prefix_group": "medical_system"}
+{"id": "p06_cache_prefix_c", "category": "caching", "prompt": "System instruction: You are a helpful assistant for medical knowledge. Query: How can someone prevent catching a viral infection?", "prefix_group": "medical_system"}

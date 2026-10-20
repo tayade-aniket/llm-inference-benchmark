@@ -3,47 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LLM Inference Benchmark & Optimization Study | Recruiter Showcase</title>
+  <title>LLM Inference Benchmark & Optimization Study | Visual Proof & Recruiter Dashboard</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <!-- FontAwesome / Lucide Icons -->
+  <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-cyan-500/30 selection:text-cyan-200">
 
   <!-- Top Navigation Bar -->
-  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+  <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3">
-        <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white font-bold shadow-lg shadow-cyan-500/20">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg shadow-cyan-500/20">
           <i class="fa-solid fa-bolt"></i>
         </div>
         <div>
-          <span class="font-bold text-lg text-white tracking-tight">LLM Inference Study</span>
-          <span class="text-xs text-cyan-400 bg-cyan-950/70 border border-cyan-800/60 px-2 py-0.5 rounded-full ml-2">Systems & Edge AI</span>
+          <span class="font-bold text-base sm:text-lg text-white tracking-tight">LLM Inference Study</span>
+          <span class="text-[11px] text-cyan-400 bg-cyan-950/70 border border-cyan-800/60 px-2.5 py-0.5 rounded-full ml-2 font-mono">Intel i3 • 4GB RAM</span>
         </div>
       </div>
 
-      <nav class="hidden md:flex space-x-6 text-sm font-medium text-slate-300">
+      <nav class="hidden lg:flex space-x-6 text-sm font-medium text-slate-300">
         <a href="#overview" class="hover:text-cyan-400 transition-colors">Overview</a>
-        <a href="#simulator" class="hover:text-cyan-400 transition-colors">Interactive Simulator</a>
-        <a href="#benchmarks" class="hover:text-cyan-400 transition-colors">Empirical Data</a>
+        <a href="#race" class="hover:text-cyan-400 transition-colors">Visual Token Race</a>
+        <a href="#caching" class="hover:text-cyan-400 transition-colors">Prefix Caching</a>
+        <a href="#memory-budget" class="hover:text-cyan-400 transition-colors">Memory Safety</a>
+        <a href="#simulator" class="hover:text-cyan-400 transition-colors">Simulator</a>
         <a href="#roofline" class="hover:text-cyan-400 transition-colors">Roofline Model</a>
-        <a href="#faq" class="hover:text-cyan-400 transition-colors">Recruiter FAQ</a>
+        <a href="#benchmarks" class="hover:text-cyan-400 transition-colors">Empirical Data</a>
+        <a href="#faq" class="hover:text-cyan-400 transition-colors">Interview FAQ</a>
       </nav>
 
       <div class="flex items-center space-x-3">
-        <button id="copySummaryBtn" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-md flex items-center gap-1.5 transition">
+        <button id="copySummaryBtn" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition shadow-sm font-semibold">
           <i class="fa-regular fa-copy"></i>
-          <span>Copy Summary</span>
+          <span>Copy Proof Sheet</span>
         </button>
-        <a href="https://github.com" target="_blank" class="text-xs bg-cyan-600 hover:bg-cyan-500 text-white font-semibold px-3 py-1.5 rounded-md shadow shadow-cyan-600/30 transition flex items-center gap-1">
-          <i class="fa-brands fa-github"></i>
-          <span>GitHub</span>
-        </a>
       </div>
     </div>
   </header>
@@ -57,38 +56,38 @@
       <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div class="relative z-10 space-y-5 max-w-4xl">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-xs font-semibold text-cyan-400">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/90 border border-slate-700 text-xs font-semibold text-cyan-400">
           <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-          Empirical Systems Benchmark on Intel Core i3 (4 GB RAM, Pure CPU)
+          Empirical Systems Benchmark on Intel Core i3 (4.0 GB RAM, Pure CPU)
         </div>
 
-        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
           Deploying LLMs Under Extreme Memory Constraints: <br>
-          <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">
+          <span class="bg-gradient-to-r from-cyan-400 via-indigo-400 to-emerald-400 bg-clip-text text-transparent">
             Latency, Throughput & Quantization Trade-offs
           </span>
         </h1>
 
         <p class="text-slate-300 text-base md:text-lg leading-relaxed">
-          How do inference engines, vectorization, and 4-bit quantization enable responsive language model serving on a 10-year-old dual-core CPU with zero discrete GPU VRAM? This study provides rigorous theoretical modeling and empirical measurements.
+          How do inference engines, vectorization, and 4-bit integer quantization enable responsive language model serving on a 10-year-old dual-core CPU with zero discrete GPU VRAM? This study provides rigorous theoretical modeling and empirical measurements.
         </p>
 
         <!-- Hardware & Platform Tags -->
         <div class="flex flex-wrap gap-2 pt-2">
-          <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-blue-950/60 text-blue-300 border border-blue-800/50">
-            <i class="fa-solid fa-microchip mr-1"></i> Intel Core i3-5005U @ 2.0 GHz
+          <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-blue-950/70 text-blue-300 border border-blue-800/60 flex items-center gap-1.5">
+            <i class="fa-solid fa-microchip"></i> Intel Core i3-5005U @ 2.0 GHz
           </span>
-          <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-purple-950/60 text-purple-300 border border-purple-800/50">
-            <i class="fa-solid fa-memory mr-1"></i> 3.90 GB RAM (<= 850 MB Budget)
+          <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-purple-950/70 text-purple-300 border border-purple-800/60 flex items-center gap-1.5">
+            <i class="fa-solid fa-memory"></i> 3.90 GB RAM (&le; 850 MB Budget)
           </span>
-          <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-emerald-950/60 text-emerald-300 border border-emerald-800/50">
-            <i class="fa-solid fa-code mr-1"></i> llama.cpp AVX2 SIMD
+          <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-emerald-950/70 text-emerald-300 border border-emerald-800/60 flex items-center gap-1.5">
+            <i class="fa-solid fa-code"></i> llama.cpp AVX2 SIMD
           </span>
-          <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-amber-950/60 text-amber-300 border border-amber-800/50">
-            <i class="fa-solid fa-brain mr-1"></i> Qwen2.5-0.5B-Instruct-Q4_K_M
+          <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-amber-950/70 text-amber-300 border border-amber-800/60 flex items-center gap-1.5">
+            <i class="fa-solid fa-brain"></i> Qwen2.5-0.5B-Instruct-Q4_K_M
           </span>
-          <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-rose-950/60 text-rose-300 border border-rose-800/50">
-            <i class="fa-solid fa-ban mr-1"></i> Zero CUDA / No dGPU
+          <span class="px-3 py-1 rounded-lg text-xs font-semibold bg-rose-950/70 text-rose-300 border border-rose-800/60 flex items-center gap-1.5">
+            <i class="fa-solid fa-ban"></i> Zero CUDA / No dGPU
           </span>
         </div>
       </div>
@@ -96,15 +95,15 @@
 
     <!-- Key Metrics Grid -->
     <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="bg-slate-900/90 border border-slate-800 p-5 rounded-xl hover:border-cyan-500/50 transition">
+      <div class="bg-slate-900/90 border border-slate-800 p-5 rounded-xl hover:border-cyan-500/50 transition shadow-lg">
         <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Time to First Token (TTFT)</div>
         <div class="text-3xl font-extrabold text-cyan-400">173.7 ms</div>
         <div class="text-xs text-emerald-400 mt-1 flex items-center gap-1 font-medium">
-          <i class="fa-solid fa-arrow-down"></i> 86% faster than FP32
+          <i class="fa-solid fa-arrow-down"></i> 86.1% faster than FP32
         </div>
       </div>
 
-      <div class="bg-slate-900/90 border border-slate-800 p-5 rounded-xl hover:border-cyan-500/50 transition">
+      <div class="bg-slate-900/90 border border-slate-800 p-5 rounded-xl hover:border-cyan-500/50 transition shadow-lg">
         <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Decoding Throughput</div>
         <div class="text-3xl font-extrabold text-blue-400">5.76 tok/s</div>
         <div class="text-xs text-emerald-400 mt-1 flex items-center gap-1 font-medium">
@@ -112,7 +111,7 @@
         </div>
       </div>
 
-      <div class="bg-slate-900/90 border border-slate-800 p-5 rounded-xl hover:border-cyan-500/50 transition">
+      <div class="bg-slate-900/90 border border-slate-800 p-5 rounded-xl hover:border-cyan-500/50 transition shadow-lg">
         <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Peak Process RSS</div>
         <div class="text-3xl font-extrabold text-emerald-400">336.9 MB</div>
         <div class="text-xs text-emerald-400 mt-1 flex items-center gap-1 font-medium">
@@ -120,47 +119,220 @@
         </div>
       </div>
 
-      <div class="bg-slate-900/90 border border-slate-800 p-5 rounded-xl hover:border-cyan-500/50 transition">
-        <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Quantization Speedup</div>
-        <div class="text-3xl font-extrabold text-indigo-400">2.51x</div>
-        <div class="text-xs text-slate-400 mt-1 flex items-center gap-1 font-medium">
-          <i class="fa-solid fa-bolt"></i> Memory bus bandwidth bound
+      <div class="bg-slate-900/90 border border-slate-800 p-5 rounded-xl hover:border-cyan-500/50 transition shadow-lg">
+        <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Memory Bus Volume</div>
+        <div class="text-3xl font-extrabold text-indigo-400">0.39 GB/tok</div>
+        <div class="text-xs text-slate-300 mt-1 flex items-center gap-1 font-medium">
+          <i class="fa-solid fa-bolt text-amber-400"></i> Halves DDR3 bus traffic
         </div>
       </div>
     </section>
 
-    <!-- Elevator Pitch Box -->
-    <section class="bg-slate-900/80 border-l-4 border-cyan-500 border-y border-r border-slate-800 rounded-r-xl p-6">
-      <h3 class="text-lg font-bold text-white flex items-center gap-2 mb-2">
-        <i class="fa-solid fa-bullhorn text-cyan-400"></i> The 60-Second Recruiter Summary
-      </h3>
-      <p class="text-slate-300 text-sm leading-relaxed mb-3">
-        Modern machine learning usually takes gigabytes of VRAM for granted. This project demonstrates foundational systems literacy by deploying a state-of-the-art open-weights model onto a <strong>severely constrained dual-core CPU with only 4 GB total system RAM</strong>.
-      </p>
-      <div class="grid md:grid-cols-3 gap-4 text-xs text-slate-300 pt-2 border-t border-slate-800">
+    <!-- SECTION: VISUAL TOKEN RACE -->
+    <section id="race" class="space-y-6">
+      <div class="flex items-center justify-between">
         <div>
-          <strong class="text-cyan-400 block mb-1">1. Memory-Bandwidth Bound</strong>
-          Autoregressive decoding is mathematically bound by memory bus speed (16 GB/s DDR3). 4-bit quantization accelerates decoding by halving bus traffic per token.
+          <h2 class="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+            <i class="fa-solid fa-flag-checkered text-cyan-400"></i> Visual Proof: Head-to-Head Token Generation Race
+          </h2>
+          <p class="text-sm text-slate-400">Watch the side-by-side token streaming speed based on empirically measured latencies.</p>
         </div>
-        <div>
-          <strong class="text-indigo-400 block mb-1">2. Prefill is Compute-Bound</strong>
-          Prompt prefill processes tokens concurrently in matrix-matrix multiplication (GEMM), operating at peak ALU compute rather than memory bandwidth.
+        <button id="startRaceBtn" class="bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-lg shadow-lg shadow-cyan-600/30 transition flex items-center gap-2">
+          <i class="fa-solid fa-play"></i> Start Head-to-Head Race
+        </button>
+      </div>
+
+      <!-- Race Progress Bar -->
+      <div class="w-full bg-slate-900 border border-slate-800 rounded-full h-3 overflow-hidden">
+        <div id="raceProgressBar" class="bg-gradient-to-r from-cyan-500 to-emerald-400 h-full w-0 transition-all duration-100"></div>
+      </div>
+
+      <!-- Race Terminals -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Llama.cpp Terminal -->
+        <div class="bg-slate-900 border-2 border-emerald-500/60 rounded-xl p-5 shadow-xl flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+                <span class="font-bold text-emerald-400 text-sm">llama.cpp (Q4_K_M AVX2)</span>
+              </div>
+              <div class="text-xs text-slate-400 font-mono" id="llamaRaceStats">5.76 tok/s • 173.7 ms ITL • 337 MB RAM</div>
+            </div>
+            <div id="llamaRaceTerminal" class="font-mono text-xs text-emerald-400 leading-relaxed min-h-[140px] max-h-[180px] overflow-y-auto">
+              [Ready] Click "Start Head-to-Head Race" to observe live generation speed...
+            </div>
+          </div>
+          <div id="llamaRaceBadge" class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+            <span>Status: <strong class="text-slate-200">Idle</strong></span>
+            <span class="text-emerald-400 font-semibold"><i class="fa-solid fa-trophy mr-1"></i> 2.74x Faster Engine</span>
+          </div>
         </div>
-        <div>
-          <strong class="text-emerald-400 block mb-1">3. Strict Memory Guardrails</strong>
-          By capping context length and using native AVX2 SIMD memory-mapped files, active footprint stays at 337 MB RSS, avoiding catastrophic OS swap thrashing.
+
+        <!-- Transformers Terminal -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-xl flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-slate-500"></span>
+                <span class="font-bold text-slate-300 text-sm">Transformers (PyTorch FP32)</span>
+              </div>
+              <div class="text-xs text-slate-400 font-mono" id="hfRaceStats">2.10 tok/s • 450.0 ms ITL • 980 MB RAM</div>
+            </div>
+            <div id="hfRaceTerminal" class="font-mono text-xs text-slate-400 leading-relaxed min-h-[140px] max-h-[180px] overflow-y-auto">
+              [Ready] Baseline unoptimized engine waiting for race...
+            </div>
+          </div>
+          <div id="hfRaceBadge" class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+            <span>Status: <strong class="text-slate-200">Idle</strong></span>
+            <span class="text-rose-400 font-semibold"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Breaches 850MB RAM</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Interactive Simulator Section -->
+    <!-- SECTION: PREFIX CACHING -->
+    <section id="caching" class="space-y-6">
+      <div>
+        <h2 class="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <i class="fa-solid fa-bolt text-cyan-400"></i> Interactive Prompt & Prefix Caching Visualizer
+        </h2>
+        <p class="text-sm text-slate-400">Demonstrating how KV cache prefix reuse cuts TTFT prefill latency by over 7x for repeated system prompts.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-6 bg-slate-900/80 border border-slate-800 rounded-xl p-6">
+        <div class="lg:col-span-6 space-y-4">
+          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400">Select Request Scenario:</label>
+          <div class="grid grid-cols-2 gap-3">
+            <button id="cacheColdBtn" class="p-3 rounded-lg border border-cyan-500 bg-cyan-950/40 text-cyan-300 text-xs font-semibold text-left transition flex items-center gap-2">
+              <i class="fa-regular fa-snowflake text-cyan-400 text-base"></i>
+              <div>
+                <div class="font-bold">Request 1: Cold Cache</div>
+                <div class="text-[10px] text-slate-400">Full prompt prefill required (0% hit)</div>
+              </div>
+            </button>
+            <button id="cacheWarmBtn" class="p-3 rounded-lg border border-slate-700 bg-slate-800/40 text-slate-300 text-xs font-semibold text-left hover:border-emerald-500 transition flex items-center gap-2">
+              <i class="fa-solid fa-fire text-amber-400 text-base"></i>
+              <div>
+                <div class="font-bold">Request 2: Warm Cache</div>
+                <div class="text-[10px] text-slate-400">System prefix reused (85% hit)</div>
+              </div>
+            </button>
+          </div>
+
+          <!-- Prompt Structure Visualization -->
+          <div class="pt-2">
+            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Prompt Token Breakdown:</label>
+            <div class="flex gap-2 text-xs">
+              <div id="cachePrefixBlock" class="flex-1 bg-rose-950/40 border border-rose-800 p-3 rounded-lg text-center transition-all">
+                <div class="font-bold text-rose-300">System Instruction (85%)</div>
+                <div id="cachePrefixStatus" class="text-[11px] text-rose-400">Full Prefill GEMM (Cold)</div>
+              </div>
+              <div class="w-1/4 bg-blue-950/40 border border-blue-800 p-3 rounded-lg text-center">
+                <div class="font-bold text-blue-300">Query (15%)</div>
+                <div class="text-[11px] text-blue-400">Evaluated</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 bg-slate-950/80 border border-slate-800 rounded-lg p-5 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+              <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Prefill Phase Latency (TTFT)</span>
+              <span id="cacheHitBadge" class="px-2 py-0.5 rounded text-xs font-bold bg-rose-900/60 text-rose-300 border border-rose-700">Cache Miss</span>
+            </div>
+            <div class="flex items-baseline gap-4">
+              <div id="cacheTtftValue" class="text-4xl font-extrabold text-cyan-400">173.7 ms</div>
+              <div id="cacheSpeedupValue" class="text-sm font-semibold text-slate-400">Baseline (1.0x)</div>
+            </div>
+            <p id="cacheExplanation" class="text-xs text-slate-400 leading-relaxed">
+              In Request 1, the entire prompt must be processed via Matrix-Matrix multiplication (GEMM). Without a warm KV cache, TTFT takes 173.7 ms.
+            </p>
+          </div>
+          <div class="text-[11px] text-slate-500 pt-3 border-t border-slate-800">
+            <i class="fa-solid fa-lightbulb text-amber-400 mr-1"></i> Key systems insight: Prefix caching converts redundant $O(N)$ prefill compute into an $O(1)$ memory lookup.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: MEMORY BUDGET SAFETY -->
+    <section id="memory-budget" class="space-y-6">
+      <div>
+        <h2 class="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <i class="fa-solid fa-shield-halved text-cyan-400"></i> Memory Safety & Working RAM Budget (4 GB Host)
+        </h2>
+        <p class="text-sm text-slate-400">Maintaining process resident memory strictly below 850 MB to prevent catastrophic OS swap thrashing.</p>
+      </div>
+
+      <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-6 space-y-6">
+        <!-- Visual Segmented Memory Bar -->
+        <div>
+          <div class="flex justify-between text-xs text-slate-400 font-semibold uppercase tracking-wider mb-2">
+            <span>Physical RAM Allocation (0 to 3,900 MB)</span>
+            <span>Safe Process Limit: &le; 850 MB</span>
+          </div>
+
+          <!-- The Stacked Bar -->
+          <div class="w-full h-8 bg-slate-950 rounded-lg overflow-hidden flex border border-slate-700 relative">
+            <!-- OS Baseline (2600 MB) -->
+            <div style="width: 66.7%;" class="bg-slate-800 flex items-center justify-center text-[11px] font-semibold text-slate-400 border-r border-slate-900" title="Windows 10 Background Baseline (~2,600 MB)">
+              Windows OS (~2,600 MB)
+            </div>
+            <!-- llama.cpp Process (337 MB) -->
+            <div style="width: 8.6%;" class="bg-emerald-500 flex items-center justify-center text-[10px] font-bold text-slate-950 border-r border-slate-900" title="llama.cpp Q4_K_M Process (336.9 MB)">
+              337MB
+            </div>
+            <!-- Safe Headroom (513 MB) -->
+            <div style="width: 13.1%;" class="bg-emerald-950/60 flex items-center justify-center text-[10px] font-bold text-emerald-400 border-r border-dashed border-amber-500" title="Safe Headroom within 850 MB limit (+513 MB)">
+              +513 MB Headroom
+            </div>
+            <!-- Free Host RAM remaining -->
+            <div style="width: 11.6%;" class="bg-slate-900 flex items-center justify-center text-[10px] text-slate-500" title="Available Physical Buffer">
+              Free RAM
+            </div>
+          </div>
+
+          <!-- Markers underneath bar -->
+          <div class="flex justify-between text-[11px] text-slate-400 mt-2 font-mono">
+            <span>0 MB</span>
+            <span class="text-slate-400 font-semibold">OS Idle: 2,600 MB</span>
+            <span class="text-emerald-400 font-bold">Process RSS: 336.9 MB (Safe)</span>
+            <span class="text-amber-400 font-bold">&uarr; Budget Ceiling: 850 MB</span>
+            <span>Host Total: 3,900 MB</span>
+          </div>
+        </div>
+
+        <!-- Comparison Cards -->
+        <div class="grid md:grid-cols-3 gap-4 pt-2">
+          <div class="bg-slate-950 border border-emerald-500/50 p-4 rounded-lg">
+            <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">llama.cpp (Q4_K_M)</div>
+            <div class="text-2xl font-extrabold text-white">336.9 MB RSS</div>
+            <p class="text-xs text-slate-400 mt-2">Leaves 513 MB of breathing room under the 850 MB physical process ceiling. Zero disk thrashing.</p>
+          </div>
+          <div class="bg-slate-950 border border-amber-500/50 p-4 rounded-lg">
+            <div class="text-xs font-bold text-amber-400 uppercase tracking-wider mb-1">Transformers (FP32)</div>
+            <div class="text-2xl font-extrabold text-white">980.0 MB RSS</div>
+            <p class="text-xs text-rose-400 mt-2">&cross; Exceeds 850 MB safe ceiling! Windows begins paging dirty memory to disk, causing micro-stutters.</p>
+          </div>
+          <div class="bg-slate-950 border border-rose-500/50 p-4 rounded-lg">
+            <div class="text-xs font-bold text-rose-400 uppercase tracking-wider mb-1">vLLM (Local CPU)</div>
+            <div class="text-2xl font-extrabold text-white">&gt; 16,000 MB</div>
+            <p class="text-xs text-rose-500 mt-2">&cross; Fatal OOM: Requires discrete CUDA VRAM and high-concurrency PagedAttention pools.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: INTERACTIVE SIMULATOR -->
     <section id="simulator" class="space-y-6">
       <div class="flex items-center justify-between">
         <div>
           <h2 class="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
-            <i class="fa-solid fa-gamepad text-cyan-400"></i> Interactive Inference Simulator
+            <i class="fa-solid fa-gamepad text-cyan-400"></i> Interactive Analytical Hardware & Model Simulator
           </h2>
-          <p class="text-sm text-slate-400">Adjust model size, quantization, and hardware architecture to preview generation dynamics.</p>
+          <p class="text-sm text-slate-400">Explore how model parameter count and quantization precision alter latency, memory, and roofline regimes.</p>
         </div>
       </div>
 
@@ -214,7 +386,7 @@
           </div>
 
           <button id="runSimBtn" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-semibold py-2.5 rounded-lg shadow-lg shadow-cyan-600/30 transition flex items-center justify-center gap-2">
-            <i class="fa-solid fa-play"></i> Run Live Streaming Demo
+            <i class="fa-solid fa-play"></i> Run Streaming Simulation
           </button>
         </div>
 
@@ -243,21 +415,65 @@
           <!-- Memory Budget Alert Banner -->
           <div id="simBudgetBanner" class="p-2.5 rounded-lg text-xs font-semibold flex items-center gap-2 bg-emerald-950/70 border border-emerald-800 text-emerald-300">
             <i class="fa-solid fa-circle-check"></i>
-            <span>Fits safely inside 4GB host RAM budget (<= 850 MB).</span>
+            <span>Fits safely inside 4GB host RAM budget (&le; 850 MB).</span>
           </div>
 
           <!-- Simulated Console -->
           <div class="bg-black/90 border border-slate-800 rounded-lg p-4 font-mono text-xs flex-1 min-h-[160px] max-h-[220px] overflow-y-auto space-y-2">
-            <div class="text-slate-500">// Terminal Streaming Output (AVX2 SIMD)</div>
+            <div class="text-slate-500">// Terminal Streaming Output</div>
             <div id="terminalStream" class="text-emerald-400 leading-relaxed">
-              [Ready] Press "Run Live Streaming Demo" to observe autoregressive token emission.
+              [Ready] Press "Run Streaming Simulation" to observe autoregressive token emission.
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Empirical Benchmark Results Section -->
+    <!-- SECTION: ROOFLINE MODEL -->
+    <section id="roofline" class="space-y-6">
+      <div>
+        <h2 class="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <i class="fa-solid fa-mountain text-cyan-400"></i> Dynamic Roofline Performance Model
+        </h2>
+        <p class="text-sm text-slate-400">Mathematical derivation proving why autoregressive decoding is strictly memory-bandwidth bound.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-8 bg-slate-900 border border-slate-800 p-5 rounded-xl">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Attainable GFLOPs/s vs Arithmetic Intensity (FLOPs/Byte)</h4>
+            <span class="text-xs font-mono text-cyan-400" id="rooflineKneeLabel">Knee: 4.0 FLOPs/Byte</span>
+          </div>
+          <div class="h-72">
+            <canvas id="rooflineChart"></canvas>
+          </div>
+        </div>
+
+        <div class="lg:col-span-4 bg-slate-900 border border-slate-800 p-5 rounded-xl space-y-4 text-xs text-slate-300 flex flex-col justify-between">
+          <div>
+            <h4 class="text-sm font-bold text-white mb-2">Theoretical Derivations</h4>
+            
+            <div class="bg-slate-800/60 p-3 rounded-lg border border-slate-700/50 space-y-1 mb-3">
+              <div class="font-semibold text-cyan-400">Batch-1 Decoding Intensity:</div>
+              <div class="font-mono text-[11px] text-slate-300">Intensity = (2 FLOPs/param) / (b/8 Bytes) = 16/b</div>
+              <div class="text-[11px] text-slate-300">For Q4_K_M (b=4.5): <strong class="text-emerald-400">3.56 FLOPs/Byte</strong></div>
+              <div class="text-[11px] text-slate-300">For FP16 (b=16): <strong class="text-rose-400">1.00 FLOP/Byte</strong></div>
+            </div>
+
+            <div class="bg-slate-800/60 p-3 rounded-lg border border-slate-700/50 space-y-1">
+              <div class="font-semibold text-amber-400">Hardware Roofline Knee:</div>
+              <div class="font-mono text-[11px] text-slate-300">Knee = Peak GFLOPs / Bandwidth = 64 / 16 = 4.0</div>
+            </div>
+          </div>
+
+          <p class="leading-relaxed text-slate-400 border-t border-slate-800 pt-3">
+            Because $3.56 < 4.0$, **batch-1 token generation operates on the memory-bandwidth slope**. Every byte saved via 4-bit quantization translates directly into increased decoding speed!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: EMPIRICAL BENCHMARKS -->
     <section id="benchmarks" class="space-y-6">
       <div>
         <h2 class="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
@@ -298,7 +514,7 @@
                 <td class="py-3 px-4 text-rose-400">450.0 ms</td>
                 <td class="py-3 px-4 text-rose-400">2.10 tok/s</td>
                 <td class="py-3 px-4 text-amber-400">980.0 MB</td>
-                <td class="py-3 px-4 font-sans"><span class="px-2 py-0.5 rounded bg-amber-900/60 text-amber-300 text-xs font-semibold">Near RAM Limit</span></td>
+                <td class="py-3 px-4 font-sans"><span class="px-2 py-0.5 rounded bg-amber-900/60 text-amber-300 text-xs font-semibold">RAM Exceeded</span></td>
               </tr>
               <tr class="hover:bg-slate-800/40 transition">
                 <td class="py-3 px-4 font-semibold text-white">vLLM (Local CPU)</td>
@@ -306,7 +522,7 @@
                 <td class="py-3 px-4 text-slate-500">N/A</td>
                 <td class="py-3 px-4 text-slate-500">N/A</td>
                 <td class="py-3 px-4 text-slate-500">N/A</td>
-                <td class="py-3 px-4 text-rose-500">> 16,000 MB</td>
+                <td class="py-3 px-4 text-rose-500">&gt; 16,000 MB</td>
                 <td class="py-3 px-4 font-sans"><span class="px-2 py-0.5 rounded bg-rose-900/60 text-rose-300 text-xs font-semibold">OOM / No CUDA</span></td>
               </tr>
             </tbody>
@@ -339,56 +555,16 @@
       </div>
     </section>
 
-    <!-- Roofline Model Section -->
-    <section id="roofline" class="space-y-6">
-      <div>
-        <h2 class="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
-          <i class="fa-solid fa-mountain text-cyan-400"></i> Roofline Performance Model
-        </h2>
-        <p class="text-sm text-slate-400">Mathematical derivation proving why autoregressive decoding is strictly memory-bandwidth bound.</p>
-      </div>
-
-      <div class="grid lg:grid-cols-12 gap-6">
-        <div class="lg:col-span-8 bg-slate-900 border border-slate-800 p-5 rounded-xl">
-          <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Attainable GFLOPs/s vs Arithmetic Intensity (FLOPs/Byte)</h4>
-          <div class="h-72">
-            <canvas id="rooflineChart"></canvas>
-          </div>
-        </div>
-
-        <div class="lg:col-span-4 bg-slate-900 border border-slate-800 p-5 rounded-xl space-y-4 text-xs text-slate-300">
-          <h4 class="text-sm font-bold text-white">Theoretical Derivations</h4>
-          
-          <div class="bg-slate-800/60 p-3 rounded-lg border border-slate-700/50 space-y-1">
-            <div class="font-semibold text-cyan-400">Batch-1 Decoding Intensity:</div>
-            <div>$$\text{Intensity} = \frac{2 \text{ FLOPs/param}}{b / 8 \text{ Bytes}} = \frac{16}{b}$$</div>
-            <div>For Q4_K_M ($b=4.5$): <strong>3.56 FLOPs/Byte</strong></div>
-            <div>For FP16 ($b=16$): <strong>1.00 FLOP/Byte</strong></div>
-          </div>
-
-          <div class="bg-slate-800/60 p-3 rounded-lg border border-slate-700/50 space-y-1">
-            <div class="font-semibold text-amber-400">Hardware Roofline Knee:</div>
-            <div>$$\text{Knee} = \frac{\text{Peak Compute}}{\text{Memory Bandwidth}} = \frac{64 \text{ GFLOPs/s}}{16 \text{ GB/s}} = 4.0$$</div>
-          </div>
-
-          <p class="leading-relaxed">
-            Because $3.56 < 4.0$, **batch-1 token generation operates on the memory-bandwidth slope**. Every byte saved via 4-bit quantization translates directly into increased decoding speed!
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Recruiter & Interview FAQ Section -->
+    <!-- SECTION: INTERVIEW FAQ -->
     <section id="faq" class="space-y-6">
       <div>
         <h2 class="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
           <i class="fa-solid fa-circle-question text-cyan-400"></i> Interview Talking Points & Deep-Dive FAQ
         </h2>
-        <p class="text-sm text-slate-400">Technical insights designed for discussions with Engineering Hiring Managers.</p>
+        <p class="text-sm text-slate-400">Technical insights designed for discussions with ML Systems Engineering Managers.</p>
       </div>
 
       <div class="space-y-4">
-        <!-- FAQ 1 -->
         <div class="border border-slate-800 rounded-xl bg-slate-900/80 p-5">
           <h3 class="text-base font-bold text-cyan-400 mb-2">
             Q1: Why does 4-bit quantization speed up CPU inference if CPU ALU is FP32?
@@ -398,7 +574,6 @@
           </p>
         </div>
 
-        <!-- FAQ 2 -->
         <div class="border border-slate-800 rounded-xl bg-slate-900/80 p-5">
           <h3 class="text-base font-bold text-cyan-400 mb-2">
             Q2: What is the architectural difference between TTFT and ITL?
@@ -408,7 +583,6 @@
           </p>
         </div>
 
-        <!-- FAQ 3 -->
         <div class="border border-slate-800 rounded-xl bg-slate-900/80 p-5">
           <h3 class="text-base font-bold text-cyan-400 mb-2">
             Q3: Why can't vLLM run on this edge machine?

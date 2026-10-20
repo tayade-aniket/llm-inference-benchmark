@@ -88,7 +88,7 @@ def test_get_live_system_metrics():
 
 
 def test_ui_static_assets_exist():
-    """Verifies that the standalone web showcase files are present and non-empty."""
+    """Verifies that the standalone web showcase files are present and contain key visual proof features."""
     assert os.path.isfile("ui/index.html")
     assert os.path.isfile("ui/style.css")
     assert os.path.isfile("ui/app.js")
@@ -96,5 +96,27 @@ def test_ui_static_assets_exist():
     with open("ui/index.html", "r", encoding="utf-8") as f:
         html = f.read()
         assert "LLM Inference Study" in html
-        assert "Roofline Performance Model" in html
-        assert "Interactive Inference Simulator" in html
+        assert "Dynamic Roofline Performance Model" in html or "Roofline Performance Model" in html
+        assert "Head-to-Head Token Generation Race" in html
+        assert "Prompt & Prefix Caching Visualizer" in html
+        assert "Memory Safety & Working RAM Budget" in html
+        assert "llama.cpp (Q4_K_M AVX2)" in html
+
+    with open("ui/app.js", "r", encoding="utf-8") as f:
+        js = f.read()
+        assert "initHeadToHeadRace" in js
+        assert "initPromptCachingVisualizer" in js
+        assert "updateRooflineChart" in js
+
+
+def test_streamlit_app_has_visual_proof_features():
+    """Verifies that app.py contains the visual proof sections and race simulator."""
+    with open("app.py", "r", encoding="utf-8") as f:
+        code = f.read()
+        assert "Start Head-to-Head Token Race" in code
+        assert "Interactive Prompt & Prefix Caching Visualizer" in code
+        assert "Memory Safety & Process Budget" in code
+        assert "Dynamic Roofline Model" in code or "Interactive Roofline Model" in code
+        assert "Executive Verification Sheet" in code
+
+

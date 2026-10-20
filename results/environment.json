@@ -1,0 +1,72 @@
+{
+  "timestamp_utc": "2026-10-15T18:37:18.199088+00:00",
+  "os": {
+    "system": "Windows",
+    "release": "10",
+    "version": "10.0.19045",
+    "platform": "Windows-10-10.0.19045-SP0"
+  },
+  "cpu": {
+    "processor": "Intel64 Family 6 Model 61 Stepping 4, GenuineIntel",
+    "machine": "AMD64",
+    "architecture": "64bit",
+    "cores_physical": 2,
+    "cores_logical": 4,
+    "model_name": "Intel(R) Core(TM) i3-5005U CPU @ 2.00GHz",
+    "flags": [
+      "avx",
+      "avx2",
+      "fma",
+      "sse4_2"
+    ]
+  },
+  "memory": {
+    "total_ram_gb": 3.9,
+    "available_ram_gb": 0.84,
+    "free_ram_gb": 0.84,
+    "used_ram_percent": 78.6,
+    "swap_total_gb": 6.25,
+    "swap_free_gb": 4.84
+  },
+  "disk": {
+    "C:\\": {
+      "total_gb": 96.59,
+      "used_gb": 73.3,
+      "free_gb": 23.3
+    },
+    "D:\\Master Project\\AI\\LLM Inference Benchmark & Optimization Study": {
+      "total_gb": 140.82,
+      "used_gb": 107.04,
+      "free_gb": 33.78
+    }
+  },
+  "gpu": {
+    "cuda_available": false,
+    "device_count": 0,
+    "devices": [],
+    "driver_version": null,
+    "windows_display_adapters": [
+      {
+        "name": "Intel(R) HD Graphics 5500",
+        "adapter_ram_mb": 1024.0,
+        "driver_version": "10.18.15.4281"
+      }
+    ]
+  },
+  "python": {
+    "python_version": "3.14.2",
+    "python_path": "C:\\Users\\asus\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+    "packages": {
+      "torch": "2.14.0",
+      "transformers": "5.12.0",
+      "tokenizers": "0.22.2",
+      "llama_cpp": "not installed",
+      "psutil": "7.2.2",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "pytest": "9.1.1",
+      "safetensors": "0.8.0",
+      "vllm": "not installed"
+    }
+  }
+}
