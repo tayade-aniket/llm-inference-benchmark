@@ -484,9 +484,10 @@ with st.sidebar:
     st.markdown("""
     <div style="margin-top: 10px; font-size: 0.85rem; color: #64748b;">
         <strong style="color: #0f172a;">Quick Links:</strong><br>
-        • <a href="file:///d:/Master%20Project/AI/LLM%20Inference%20Benchmark%20&%20Optimization%20Study/README.md" style="color: #ea580c; text-decoration: none; font-weight: 600;">Project README</a><br>
-        • <a href="file:///d:/Master%20Project/AI/LLM%20Inference%20Benchmark%20&%20Optimization%20Study/notebooks/benchmark_analysis.ipynb" style="color: #7c3aed; text-decoration: none; font-weight: 600;">Analysis Notebook</a><br>
-        • <a href="file:///d:/Master%20Project/AI/LLM%20Inference%20Benchmark%20&%20Optimization%20Study/results/benchmark_results.csv" style="color: #ff4500; text-decoration: none; font-weight: 600;">Benchmark CSV</a>
+        • <a href="https://github.com/tayade-aniket/llm-inference-benchmark/blob/main/README.md" target="_blank" rel="noopener noreferrer" style="color: #ea580c; text-decoration: none; font-weight: 600;">Project README</a><br>
+        • <a href="https://github.com/tayade-aniket/llm-inference-benchmark/blob/main/notebooks/benchmark_analysis.ipynb" target="_blank" rel="noopener noreferrer" style="color: #7c3aed; text-decoration: none; font-weight: 600;">Analysis Notebook</a><br>
+        • <a href="https://github.com/tayade-aniket/llm-inference-benchmark/blob/main/results/benchmark_results.csv" target="_blank" rel="noopener noreferrer" style="color: #ff4500; text-decoration: none; font-weight: 600;">Benchmark CSV</a><br>
+        • <a href="https://github.com/tayade-aniket/llm-inference-benchmark" target="_blank" rel="noopener noreferrer" style="color: #0284c7; text-decoration: none; font-weight: 600;">GitHub Repository</a>
     </div>
     """, unsafe_allow_html=True)
 
@@ -587,7 +588,7 @@ if app_mode == "🏁 Visual Proof & Head-to-Head Race":
         </div>
         """, unsafe_allow_html=True)
 
-    if st.button("🏁 Start Head-to-Head Token Race", type="primary", use_container_width=True):
+    if st.button("🏁 Start Head-to-Head Token Race", type="primary", width="stretch"):
         sample_tokens = [
             "Autoregressive", " decoding", " transfers", " all", " model", " weights",
             " from", " RAM", " to", " CPU", " caches", " for", " every", " single",
@@ -817,7 +818,7 @@ elif app_mode == "⚡ Prefill vs Decode & Prompt Caching":
             "Decoding Phase (ITL)": "4-bit Integer Weight Quantization (Q4_K_M)",
         },
     ])
-    st.dataframe(phase_df, use_container_width=True, hide_index=True)
+    st.dataframe(phase_df, width="stretch", hide_index=True)
 
     st.markdown("---")
 
@@ -945,7 +946,7 @@ elif app_mode == "🛡️ Memory Safety & Process Budget":
         font=dict(color="#0f172a"),
         margin=dict(l=40, r=40, t=50, b=40),
     )
-    st.plotly_chart(mem_fig, use_container_width=True)
+    st.plotly_chart(mem_fig, width="stretch")
 
     st.markdown("---")
 
@@ -1082,7 +1083,7 @@ elif app_mode == "📐 Interactive Roofline Model":
             font=dict(color="#0f172a"),
             margin=dict(l=40, r=40, t=50, b=40),
         )
-        st.plotly_chart(fig_roofline, use_container_width=True)
+        st.plotly_chart(fig_roofline, width="stretch")
 
     st.markdown("---")
     st.markdown("### 💡 Why Quantization Accelerates Autoregressive Decoding")
@@ -1112,10 +1113,10 @@ elif app_mode == "📊 Empirical Evidence & Artifacts":
                 "Engine": "llama.cpp (AVX2)",
                 "Model": "Qwen2.5-0.5B-Instruct",
                 "Quantization": "Q4_K_M (4-bit)",
-                "TTFT Median (ms)": 173.7,
-                "ITL Median (ms)": 173.7,
-                "Throughput (tok/s)": 5.76,
-                "Peak RAM (MB)": 336.9,
+                "TTFT Median (ms)": "173.7",
+                "ITL Median (ms)": "173.7",
+                "Throughput (tok/s)": "5.76",
+                "Peak RAM (MB)": "336.9",
                 "Process Budget Margin": "+513.1 MB Safe",
                 "Operational Status": "Production Ready (Edge)",
             },
@@ -1123,10 +1124,10 @@ elif app_mode == "📊 Empirical Evidence & Artifacts":
                 "Engine": "Hugging Face Transformers",
                 "Model": "Qwen2.5-0.5B-Instruct",
                 "Quantization": "FP32 (Unquantized)",
-                "TTFT Median (ms)": 1250.0,
-                "ITL Median (ms)": 450.0,
-                "Throughput (tok/s)": 2.10,
-                "Peak RAM (MB)": 980.0,
+                "TTFT Median (ms)": "1250.0",
+                "ITL Median (ms)": "450.0",
+                "Throughput (tok/s)": "2.10",
+                "Peak RAM (MB)": "980.0",
                 "Process Budget Margin": "-130.0 MB Danger",
                 "Operational Status": "Baseline (RAM Exceeded)",
             },
@@ -1142,7 +1143,8 @@ elif app_mode == "📊 Empirical Evidence & Artifacts":
                 "Operational Status": "Unsupported on 4GB CPU",
             },
         ])
-        st.dataframe(benchmark_table, use_container_width=True, hide_index=True)
+        benchmark_table = benchmark_table.astype(str)
+        st.dataframe(benchmark_table, width="stretch", hide_index=True)
 
         st.markdown("### Measured Delta Analysis")
         d1, d2, d3, d4 = st.columns(4)
@@ -1172,7 +1174,7 @@ elif app_mode == "📊 Empirical Evidence & Artifacts":
     with tab_csv:
         st.markdown("### Raw Empirical Records")
         if not raw_data.empty:
-            st.dataframe(raw_data, use_container_width=True)
+            st.dataframe(raw_data, width="stretch")
             csv_str = raw_data.to_csv(index=False)
             st.download_button(
                 label="📥 Download Raw Benchmark Observations CSV",

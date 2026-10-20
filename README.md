@@ -5,8 +5,9 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![Platform: Windows 10 CPU](https://img.shields.io/badge/platform-Windows%2010%20x64%20CPU-lightgrey.svg)](https://www.microsoft.com/windows)
-[![Tests: 11 Passed](https://img.shields.io/badge/tests-11%20passed-brightgreen.svg)](tests/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Tests: Passing](https://img.shields.io/badge/tests-passing-brightgreen.svg)](https://github.com/tayade-aniket/llm-inference-benchmark/tree/main/tests)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/tayade-aniket/llm-inference-benchmark/blob/main/LICENSE)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/tayade-aniket/llm-inference-benchmark)
 
 ---
 
@@ -146,6 +147,8 @@ LLM Inference Benchmark & Optimization Study/
 ### 1. Installation
 Clone the repository and install the lightweight requirements:
 ```powershell
+git clone https://github.com/tayade-aniket/llm-inference-benchmark.git
+cd llm-inference-benchmark
 pip install -r requirements.txt
 ```
 
