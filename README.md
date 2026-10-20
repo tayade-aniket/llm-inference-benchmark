@@ -6,8 +6,12 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![Platform: Windows 10 CPU](https://img.shields.io/badge/platform-Windows%2010%20x64%20CPU-lightgrey.svg)](https://www.microsoft.com/windows)
 [![Tests: Passing](https://img.shields.io/badge/tests-passing-brightgreen.svg)](https://github.com/tayade-aniket/llm-inference-benchmark/tree/main/tests)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://llm-inference-benchmark.streamlit.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/tayade-aniket/llm-inference-benchmark/blob/main/LICENSE)
 [![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/tayade-aniket/llm-inference-benchmark)
+
+> 🌐 **Live Interactive Web App**: [https://llm-inference-benchmark.streamlit.app/](https://llm-inference-benchmark.streamlit.app/)  
+> Experience the real-time Head-to-Head Token Race, Prompt Caching telemetry, and Interactive Roofline Model directly in your browser without any setup!
 
 ---
 
@@ -41,15 +45,19 @@ All tests in this project were executed and measured on a real physical machine:
 
 ## ⚡ Interactive Visual Proof Dashboard
 
-I built two interactive user interfaces so anyone can **visually see and test the optimizations** in action:
+I built interactive user interfaces so anyone can **visually see and test the optimizations** in action:
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
-│  Option A: Full Interactive Streamlit Dashboard                        │
+│  Option A: Live Hosted Web App (Zero Setup Required)                   │
+│  Visit:  https://llm-inference-benchmark.streamlit.app/                │
+└────────────────────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────────────────┐
+│  Option B: Local Interactive Streamlit Dashboard                       │
 │  Run:  python -m streamlit run app.py   (or double-click run_app.bat)  │
 └────────────────────────────────────────────────────────────────────────┘
 ┌────────────────────────────────────────────────────────────────────────┐
-│  Option B: Standalone Zero-Install Web Showcase                        │
+│  Option C: Standalone Zero-Install Web Showcase                        │
 │  Run:  start ui\index.html   (or python launch_ui.py --mode web)       │
 └────────────────────────────────────────────────────────────────────────┘
 ```
@@ -61,6 +69,32 @@ I built two interactive user interfaces so anyone can **visually see and test th
 - 📐 **Dynamic Roofline Model**: Live sliders for memory bandwidth and compute GFLOPs showing why decoding is strictly memory-bandwidth bound.
 - 🔥 **Live Local CPU Inference**: Run the actual on-device `llama-cli.exe` binary with real-time token emission and memory tracking.
 - 📋 **One-Click Recruiter Proof Sheet**: Instant button to copy or download a clean verification summary for portfolio reviews.
+
+---
+
+### 📸 Application Walkthrough & Visual Tour
+
+The screenshots below walk through the core analytical modules implemented in the dashboard:
+
+#### 1. Real-Time Telemetry & Hardware Constraints
+*Live hardware audit showing testbed specifications, verified AVX2 vector support, and measured speedup KPIs.*
+![Dashboard Overview & Core Metrics](screenshots/1.png)
+
+#### 2. Head-to-Head Token Generation Race
+*Direct comparison between `llama.cpp` (4-bit Q4_K_M, AVX2 SIMD) and PyTorch `Transformers` (FP32 uncompressed). `llama.cpp` finishes in 4.17s (5.76 tok/s) vs 12.05s (2.10 tok/s)—a 2.74x speedup while consuming 643 MB less RAM.*
+![Head-to-Head Token Generation Race](screenshots/2.png)
+
+#### 3. Prefill vs. Decoding Phase Separation Matrix
+*Deep-dive theoretical matrix illustrating why Prompt Prefill (TTFT) is compute-bound (GEMM) and Autoregressive Decoding (ITL) is memory-bandwidth bound (GEMV).*
+![Prefill vs Decoding Mechanics](screenshots/3.png)
+
+#### 4. Prompt & KV Prefix Caching Visualizer
+*Simulating cache-hit dynamics across multi-turn queries. Reusing precomputed KV states cuts prefill latency from 173.7 ms down to 24 ms (7.1x speedup).*
+![Prompt and Prefix Caching Visualizer](screenshots/4.png)
+
+#### 5. Memory Safety & Process Budget on 4 GB Hardware
+*Live resident process memory (RSS) vs. physical host limits. Visual proof that 4-bit quantization keeps the memory footprint at 336.9 MB (preserving a 513 MB safety margin), whereas FP32 breaches the 850 MB limit and vLLM experiences fatal OOM.*
+![Memory Safety and Process Budget](screenshots/5.png)
 
 ---
 
