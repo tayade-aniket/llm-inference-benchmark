@@ -57,7 +57,7 @@ class ResourceMonitor:
 
 
 class PeakMemoryTracker:
-    """Context manager to measure process peak memory delta during a code block."""
+    """Context manager or imperative tracker to measure process peak memory delta."""
 
     def __init__(self):
         self.process = psutil.Process(os.getpid())
@@ -65,19 +65,33 @@ class PeakMemoryTracker:
         self.peak_rss_mb: float = 0.0
         self.end_rss_mb: float = 0.0
 
-    def __enter__(self):
+    def start(self):
+        """Starts memory tracking and snapshots initial resident set size."""
         ResourceMonitor.force_clean_memory()
         self.start_rss_mb = self.process.memory_info().rss / (1024 * 1024)
         self.peak_rss_mb = self.start_rss_mb
         return self
 
     def update(self):
+        """Polls current memory and updates peak RSS if higher."""
         current = self.process.memory_info().rss / (1024 * 1024)
         if current > self.peak_rss_mb:
             self.peak_rss_mb = current
 
+    def stop(self) -> Dict[str, float]:
+        """Stops memory tracking and returns peak, start, end and delta RAM statistics in MB."""
+        self.update()
+        self.end_rss_mb = self.process.memory_info().rss / (1024 * 1024)
+        return {
+            "peak_process_ram_mb": round(self.peak_rss_mb, 2),
+            "start_process_ram_mb": round(self.start_rss_mb, 2),
+            "end_process_ram_mb": round(self.end_rss_mb, 2),
+            "delta_ram_mb": round(self.peak_rss_mb - self.start_rss_mb, 2),
+        }
+
+    def __enter__(self):
+        self.start()
+        return self
+
     def __exit__(self, exc_type, exc_val, exc_tb):
-        current = self.process.memory_info().rss / (1024 * 1024)
-        if current > self.peak_rss_mb:
-            self.peak_rss_mb = current
-        self.end_rss_mb = current
+        self.stop()

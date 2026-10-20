@@ -120,3 +120,26 @@ def test_streamlit_app_has_visual_proof_features():
         assert "Executive Verification Sheet" in code
 
 
+def test_peak_memory_tracker_start_stop():
+    """Verifies that PeakMemoryTracker supports both start()/stop() and context manager usage."""
+    from src.inference_bench.resource_monitor import PeakMemoryTracker
+
+    tracker = PeakMemoryTracker()
+    tracker.start()
+    dummy = [i for i in range(100000)]
+    del dummy
+    stats = tracker.stop()
+
+    assert isinstance(stats, dict)
+    assert "peak_process_ram_mb" in stats
+    assert stats["peak_process_ram_mb"] > 0
+    assert "delta_ram_mb" in stats
+
+    with PeakMemoryTracker() as ctx_tracker:
+        dummy2 = [i * 2 for i in range(100000)]
+        ctx_tracker.update()
+        assert ctx_tracker.peak_rss_mb > 0
+        del dummy2
+
+
+
