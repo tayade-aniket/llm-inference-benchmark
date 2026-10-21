@@ -388,13 +388,13 @@ function initSimulator() {
 
     // Budget Banner
     const banner = document.getElementById("simBudgetBanner");
-    const safeLimit = 850.0;
+    const safeLimit = hostRamGb <= 4.5 ? 850.0 : Math.round(hostRamGb * 1024 * 0.40);
     if (totalRamMb > hostRamGb * 1024 * 0.8) {
       banner.className = "p-2.5 rounded-lg text-xs font-semibold flex items-center gap-2 bg-rose-950/70 border border-rose-800 text-rose-300";
       banner.innerHTML = `<i class="fa-solid fa-circle-xmark"></i><span>FATAL OOM: Footprint (${Math.round(totalRamMb)} MB) exceeds hardware RAM (${hostRamGb} GB)!</span>`;
     } else if (totalRamMb <= safeLimit) {
       banner.className = "p-2.5 rounded-lg text-xs font-semibold flex items-center gap-2 bg-emerald-950/70 border border-emerald-800 text-emerald-300";
-      banner.innerHTML = `<i class="fa-solid fa-circle-check"></i><span>Fits safely within our 4GB testbed budget (&le; 850 MB, ${Math.round(safeLimit - totalRamMb)} MB headroom).</span>`;
+      banner.innerHTML = `<i class="fa-solid fa-circle-check"></i><span>Fits safely within dynamic process budget (&le; ${safeLimit} MB, ${Math.round(safeLimit - totalRamMb)} MB headroom).</span>`;
     } else {
       banner.className = "p-2.5 rounded-lg text-xs font-semibold flex items-center gap-2 bg-blue-950/70 border border-blue-800 text-blue-300";
       banner.innerHTML = `<i class="fa-solid fa-circle-info"></i><span>Supported on ${hostRamGb} GB hardware tier (${Math.round(totalRamMb)} MB active RAM).</span>`;
